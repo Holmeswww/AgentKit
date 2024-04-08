@@ -6,7 +6,7 @@
 <!-- [[Website]](https://minedojo.org) -->
 [[Arxiv Paper]](TODO)
 [[PDF]](TODO)
-[[Docs]](https://agentkit-docs.readthedocs.io/)
+[[Docs]](https://agentkit.readthedocs.io/)
 
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/MineDojo)](https://pypi.org/project/MineDojo/)
 [![PyPI](https://img.shields.io/pypi/v/minedojo)](https://pypi.org/project/minedojo/)
