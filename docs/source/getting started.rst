@@ -12,7 +12,7 @@ To install the cutting edge version from the main branch of this repo, run:
 
 .. code-block:: console
 
-   git clone https://github.com/anonymousLLM/AgentKit && cd AgentKit
+   git clone https://github.com/holmeswww/AgentKit && cd AgentKit
    pip install -e .
 
 Creating and running a basic graph
