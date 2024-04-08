@@ -45,7 +45,7 @@ pip install agentkit
 To install the cutting edge version from the main branch of this repo, run:
 
 ```bash
-git clone https://github.com/anonymousLLM/AgentKit && cd AgentKit
+git clone https://github.com/holmeswww/AgentKit && cd AgentKit
 pip install -e .
 ```
 
