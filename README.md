@@ -57,6 +57,9 @@ At inference time, AgentKit evaluates all nodes in specified order as a directed
 
 ```python
 from agentkit import Graph, BaseNode
+import agentkit.llm_api
+
+LLM_API_FUNCTION = agentkit.llm_api.get_query("gpt-4")
 
 graph = Graph()
 
@@ -80,7 +83,7 @@ graph.add_edge(subtask2, subtask3)
 result = graph.evaluate() # outputs a dictionary of prompt, answer pairs
 ```
 
-``LLM_API_FUNCTION`` can be any LLM querying function that takes ``msg:list`` and ``shrink_idx:int``, and outputs ``llm_result:str`` and ``usage:dict``. Where ``msg`` is a prompt ([OpenAI format](https://platform.openai.com/docs/guides/text-generation/chat-completions-api) by default), and ``shrink_idx:int`` is an index at which the LLM should reduce the length of the prompt in case of overflow. 
+``LLM_API_FUNCTION`` can be any LLM API function that takes ``msg:list`` and ``shrink_idx:int``, and outputs ``llm_result:str`` and ``usage:dict``. Where ``msg`` is a prompt ([OpenAI format](https://platform.openai.com/docs/guides/text-generation/chat-completions-api) by default), and ``shrink_idx:int`` is an index at which the LLM should reduce the length of the prompt in case of overflow. 
 
 AgentKit tracks token usage of each node through the ``LLM_API_FUNCTION`` with:
 ```python
