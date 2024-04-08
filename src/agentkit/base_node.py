@@ -73,7 +73,6 @@ class BaseNode:
         else:
             self.token_counter = None
     
-    @property
     def get_dependencies(self):
         """Get the dependencies (edges) of the node.
 

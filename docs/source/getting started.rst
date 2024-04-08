@@ -34,15 +34,15 @@ At inference time, AgentKit evaluates all nodes in specified order as a directed
    graph = Graph()
 
    subtask1 = "What are the pros and cons for using LLM Agents for Game AI?" 
-   node1 = BaseNode(subtask1, subtask1, graph, LLM_API_FUNCTION)
+   node1 = BaseNode(subtask1, subtask1, graph, LLM_API_FUNCTION, agentkit.compose_prompt.BaseComposePrompt())
    graph.add_node(node1)
 
    subtask2 = "Give me an outline for an essay titled 'LLM Agents for Games'." 
-   node2 = BaseNode(subtask2, subtask2, graph, LLM_API_FUNCTION)
+   node2 = BaseNode(subtask2, subtask2, graph, LLM_API_FUNCTION, agentkit.compose_prompt.BaseComposePrompt())
    graph.add_node(node2)
 
    subtask3 = "Now, write a full essay on the topic 'LLM Agents for Games'."
-   node3 = BaseNode(subtask3, subtask3, graph, LLM_API_FUNCTION)
+   node3 = BaseNode(subtask3, subtask3, graph, LLM_API_FUNCTION, agentkit.compose_prompt.BaseComposePrompt())
    graph.add_node(node3)
 
 

@@ -42,7 +42,6 @@ class Graph:
         self.wandb_root_span = None
         self.chain_span = None
     
-    @property
     def get_node_with_temporary(self, key):
         """Get a node from the graph.
 
