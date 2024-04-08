@@ -27,6 +27,10 @@ At inference time, AgentKit evaluates all nodes in specified order as a directed
 
    from agentkit import Graph, BaseNode
 
+   import agentkit.llm_api
+
+   LLM_API_FUNCTION = agentkit.llm_api.get_query("gpt-4")
+
    graph = Graph()
 
    subtask1 = "What are the pros and cons for using LLM Agents for Game AI?" 
