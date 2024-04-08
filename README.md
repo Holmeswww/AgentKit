@@ -3,16 +3,16 @@
 
 **AgentKit: Structured LLM Reasoning with Dynamic Graphs**
 
-<!-- [[Website]](https://minedojo.org) -->
+<!-- [[Website]](https://TODO.org) -->
 [[Arxiv Paper]](TODO)
 [[PDF]](TODO)
 [[Docs]](https://agentkit.readthedocs.io/)
 
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/MineDojo)](https://pypi.org/project/MineDojo/)
-[![PyPI](https://img.shields.io/pypi/v/minedojo)](https://pypi.org/project/minedojo/)
-[![PyPI Status](https://pepy.tech/badge/MineDojo)](https://pepy.tech/project/MineDojo)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/AgentKit)](https://pypi.org/project/AgentKit/)
+[![PyPI](https://img.shields.io/pypi/v/agentkit)](https://pypi.org/project/agentkit/)
+[![PyPI Status](https://pepy.tech/badge/AgentKit)](https://pepy.tech/project/AgentKit)
 [![Docs](https://img.shields.io/badge/Docs-passing-green.svg "Author")](http://docs.minedojo.org/index.html "Docs")
-[![GitHub license](https://img.shields.io/github/license/MineDojo/MineDojo)](https://github.com/MineDojo/MineDojo/blob/main/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/holmeswww/AgentKit)](https://github.com/MineDojo/MineDojo/blob/main/LICENSE)
 ______________________________________________________________________
 ![](imgs/teaser.png)
 </div>
