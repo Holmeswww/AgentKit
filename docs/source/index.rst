@@ -8,9 +8,6 @@ Different arrangements of nodes could represent different functionalities, allow
 
 A basic agent could be implemented as simple as a list of prompts for the subtasks and therefore could be designed and tuned by someone *without any programming experience*.
 
-.. note::
-
-   This project is under active development.
 
 Contents
 --------
