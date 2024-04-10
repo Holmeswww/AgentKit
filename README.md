@@ -11,7 +11,7 @@
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/AgentKit-llm)](https://pypi.org/project/AgentKit-llm/)
 [![PyPI](https://img.shields.io/pypi/v/agentkit-llm)](https://pypi.org/project/agentkit-llm/)
 [![PyPI Status](https://pepy.tech/badge/AgentKit-llm)](https://pepy.tech/project/AgentKit-llm)
-[![Docs](https://img.shields.io/badge/Docs-passing-green.svg "Author")](http://agentkit.readthedocs.io "Docs")
+[![Docs](https://readthedocs.org/projects/agentkit/badge/?version=latest)](https://agentkit.readthedocs.io/en/latest/?badge=latest)
 [![GitHub license](https://img.shields.io/github/license/holmeswww/AgentKit)](https://github.com/holmeswww/AgentKit/blob/main/LICENSE)
 ______________________________________________________________________
 ![](imgs/teaser.png)
