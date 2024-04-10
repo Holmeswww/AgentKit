@@ -2,8 +2,8 @@ import setuptools
 import pkg_resources
 import pathlib
 
-PKG_NAME = "agentkit"
-VERSION = "0.1"
+PKG_NAME = "agentkit-llm"
+VERSION = "0.1.0"
 EXTRAS = {}
 
 def _read_install_requires():

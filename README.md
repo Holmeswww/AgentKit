@@ -1,5 +1,5 @@
 <div align="center">
-<img src="imgs/AgentKit.png" width="350px">
+<img src="https://github.com/Holmeswww/AgentKit/raw/main/imgs/AgentKit.png" width="350px">
 
 **AgentKit: Structured LLM Reasoning with Dynamic Graphs**
 
@@ -8,16 +8,16 @@
 [[PDF]](TODO)
 [[Docs]](https://agentkit.readthedocs.io/)
 
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/agentkit-llm)](https://pypi.org/project/AgentKit-llm/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/agentkit-llm)](https://pypi.org/project/agentkit-llm/)
 [![PyPI](https://img.shields.io/pypi/v/agentkit-llm)](https://pypi.org/project/agentkit-llm/)
-[![PyPI Status](https://pepy.tech/badge/agentkit-llm)](https://pepy.tech/project/AgentKit-llm)
+[![PyPI Status](https://pepy.tech/badge/agentkit-llm)](https://pepy.tech/project/agentkit-llm)
 [![Docs](https://readthedocs.org/projects/agentkit/badge/?version=latest)](https://agentkit.readthedocs.io/en/latest/?badge=latest)
 [![GitHub license](https://img.shields.io/github/license/holmeswww/agentkit)](https://github.com/holmeswww/AgentKit/blob/main/LICENSE)
 ______________________________________________________________________
-![](imgs/teaser.png)
+![](https://github.com/Holmeswww/AgentKit/raw/main/imgs/AgentKit.png)
 </div>
 
-<img src="imgs/AgentKit.png" width="65px"> offers a unified framework for explicitly constructing a complex human "thought process" from simple natural language prompts.
+<img src="https://github.com/Holmeswww/AgentKit/raw/main/imgs/AgentKit.png" width="65px"> offers a unified framework for explicitly constructing a complex human "thought process" from simple natural language prompts.
 The user puts together chains of *nodes*, like stacking LEGO pieces. The chains of nodes can be designed to explicitly enforce a naturally *structured* "thought process".
 
 Different arrangements of nodes could represent different functionalities, allowing the user to integrate various functionalities to build multifunctional agents.
@@ -100,7 +100,7 @@ First, follow [the installation guide](#Installation) to install AgentKit.
 
 # Node Components
 
-![](imgs/node_archi.png)
+![](https://github.com/Holmeswww/AgentKit/raw/main/imgs/node_archi.png)
 Inside each node (as shown to the left of the figure), AgentKit runs a built-in flow that **preprocesses** the input (Compose), queryies the LLM with a preprocessed input and prompt $q_v$, and optionally **postprocesses** the output of the LLM (After-query).
 
 To support advanced capabilities such as branching, AgentKit offers API to dynamically modify the DAG at inference time (as shown to the right of the figure). Nodes/edges could be dynamically added or removed based on the LLM response at some ancestor nodes.
