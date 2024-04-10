@@ -35,14 +35,13 @@ A basic agent could be implemented as simple as a list of prompts for the subtas
 
 # Installation
 
-<!-- Installing the AgentKit stable version is as simple as:
+Installing the AgentKit stable version is as simple as:
 
 ```bash
-pip install agentkit
-``` -->
+pip install agentkit-llm
+```
 
-
-To install the cutting edge version from the main branch of this repo, run:
+Otherwise, to install the cutting edge version from the main branch of this repo, run:
 
 ```bash
 git clone https://github.com/holmeswww/AgentKit && cd AgentKit

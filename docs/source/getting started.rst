@@ -6,9 +6,13 @@ Getting Started
 Installation
 ------------
 
-To use Lumache, first install it using pip:
+Installing the AgentKit stable version is as simple as:
 
-To install the cutting edge version from the main branch of this repo, run:
+.. code-block:: console
+
+   pip install agentkit-llm
+
+Otherwise, to install the cutting edge version from the main branch of this repo, run:
 
 .. code-block:: console
 
