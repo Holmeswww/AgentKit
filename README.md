@@ -8,11 +8,11 @@
 [[PDF]](TODO)
 [[Docs]](https://agentkit.readthedocs.io/)
 
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/AgentKit-llm)](https://pypi.org/project/AgentKit-llm/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/agentkit-llm)](https://pypi.org/project/AgentKit-llm/)
 [![PyPI](https://img.shields.io/pypi/v/agentkit-llm)](https://pypi.org/project/agentkit-llm/)
-[![PyPI Status](https://pepy.tech/badge/AgentKit-llm)](https://pepy.tech/project/AgentKit-llm)
+[![PyPI Status](https://pepy.tech/badge/agentkit-llm)](https://pepy.tech/project/AgentKit-llm)
 [![Docs](https://readthedocs.org/projects/agentkit/badge/?version=latest)](https://agentkit.readthedocs.io/en/latest/?badge=latest)
-[![GitHub license](https://img.shields.io/github/license/holmeswww/AgentKit)](https://github.com/holmeswww/AgentKit/blob/main/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/holmeswww/agentkit)](https://github.com/holmeswww/AgentKit/blob/main/LICENSE)
 ______________________________________________________________________
 ![](imgs/teaser.png)
 </div>
