@@ -3,19 +3,10 @@ import pkg_resources
 import pathlib
 
 PKG_NAME = "agentkit-llm"
-VERSION = "0.1.0"
-EXTRAS = {}
-
-def _read_install_requires():
-    with pathlib.Path("requirements.txt").open() as fp:
-        return [
-            str(requirement) for requirement in pkg_resources.parse_requirements(fp)
-        ]
-
-def _fill_extras(extras):
-    if extras:
-        extras["all"] = list(set([item for group in extras.values() for item in group]))
-    return extras
+VERSION = "0.1.1"
+EXTRAS = {
+    "logging": ["wandb"],
+}
 
 setuptools.setup(
     name=PKG_NAME,
@@ -28,8 +19,8 @@ setuptools.setup(
     packages=setuptools.find_namespace_packages('src'),
     package_dir={'': 'src'},
     entry_points={'console_scripts': ['agentkit=agentkit.run_gui:main']},
-    install_requires=_read_install_requires(),
-    extras_require=_fill_extras(EXTRAS),
+    install_requires = ['colorama'],
+    extras_require=EXTRAS,
     include_package_data=True,
     license="CC-BY-4.0-Attribution",
     classifiers=[
