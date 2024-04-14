@@ -15,4 +15,5 @@ Contents
 .. toctree::
    Home <self>
    getting started
+   node in agentkit
    api

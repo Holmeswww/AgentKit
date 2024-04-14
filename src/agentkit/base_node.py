@@ -2,7 +2,7 @@ from .exceptions import AfterQueryError
 from .node_functions import error_msg_default
 from collections.abc import Callable, Awaitable
 from .graph import Graph
-from .base_afterquery import BaseAfterQuery
+from .after_query import BaseAfterQuery
 from .compose_prompt import BaseComposePrompt
 from colorama import Fore, Back, Style
 import copy

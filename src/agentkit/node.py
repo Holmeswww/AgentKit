@@ -6,7 +6,7 @@ from .graph import Graph
 from colorama import Fore, Back, Style
 import typing as t
 
-from .base_afterquery import BaseAfterQuery
+from .after_query import BaseAfterQuery
 from .compose_prompt import ComposePromptDB
 
 class SimpleDBNode(BaseNode):
