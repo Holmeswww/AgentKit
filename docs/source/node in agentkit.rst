@@ -3,10 +3,6 @@ Node in AgentKit
 
 Node
 ----------------
-.. automodule:: agentkit.node
-    :special-members: __init__
-    :members:
-
 The basic building block in AgentKit is a node, containing a natural language prompt for a specific subtask.
 The nodes are linked together by the dependency specifications, which specify the order of evaluation.
 Different arrangements of nodes can represent different different logic and throught processes.
@@ -14,6 +10,9 @@ At inference time, AgentKit evaluates all nodes in the order specified by the de
 
 Inside a Node
 ----------------
+
+.. autoclass:: agentkit.node.BaseNode
+    :special-members: __init__
 
 Inside each node :math:`v`, AgentKit runs a built-in flow that preprocesses the input (Compose), queryies the LLM with a preprocessed input and prompt :math:`q_v`, and optionally postprocesses the output of the LLM (After-query).
 For example, node :math:`n_{4}` can be designed to Identify the intentions of other road users. (left of Figure).
@@ -28,7 +27,7 @@ For example, node :math:`n_{4}` can be designed to Identify the intentions of ot
 
 Compose
 ----------------
-.. automodule:: agentkit.compose_prompt.BaseComposePrompt
+.. autoclass:: agentkit.compose_prompt.BaseComposePrompt
     :special-members: __init__
     :members:
 
@@ -36,7 +35,7 @@ The Compose operation is a built-in operation that preprocesses the input before
 The Compose operation is designed to be customizable with minimal programming through the AgentKit API.
 For example, the Compose operation can be used to add a prefix to the input, remove irrelevant information, or add additional context to the input.
 
-.. automodule:: agentkit.compose_prompt.ComposePromptDB
+.. autoclass:: agentkit.compose_prompt.ComposePromptDB
     :special-members: __init__
     :members:
 
@@ -48,13 +47,13 @@ The database can be used to store and retrieve:
 
 After-query
 ----------------
-.. automodule:: agentkit.after_query.BaseAfterQuery
+.. autoclass:: agentkit.after_query.BaseAfterQuery
     :special-members: __init__
     :members:
 
 The After-query operation is a optional operation that postprocesses the output of the LLM.
 
-.. automodule:: agentkit.after_query.JsonAfterQuery
+.. autoclass:: agentkit.after_query.JsonAfterQuery
     :special-members: __init__
     :members:
 
