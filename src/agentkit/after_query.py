@@ -36,17 +36,25 @@ class BaseAfterQuery:
         self.post_process()
 
 class JsonAfterQuery(BaseAfterQuery):
+    """Class for after query postprocessing of Json objects.
+
+    Attributes:
+        type (type): Type of the Json object.
+        required_keys (list): List of required keys in the Json object.
+        length (int): Required length of the Json object.
+    """
 
     def __init__(self):
         super().__init__()
         self.type = dict
-        self.values = []
+        self.required_keys = []
         self.length = None
 
     def parse_json(self):
         """Parse the result of the LLM query.
 
         This method parses self.node.result (str) and returns the parsed Json object.
+        The method checks the length of the parsed Json object, and if the Json object contains the required keys.
 
         Raises:
             AfterQueryError: If the answer is invalid.
@@ -64,7 +72,7 @@ class JsonAfterQuery(BaseAfterQuery):
         if self.length is not None and len(parsed_answer[-1]) != self.length:
             raise AfterQueryError("Invalid answer", "Expecting length {}, got {} instead.".format(self.length, len(parsed_answer[-1])))
 
-        for k in self.values:
+        for k in self.required_keys:
             if k not in parsed_answer[-1].keys():
                 raise AfterQueryError("Invalid answer", "Expecting '{}' in the keys.".format(k))
         
