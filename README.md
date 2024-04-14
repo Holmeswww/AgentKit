@@ -75,7 +75,7 @@ subtask3 = "Now, write a full essay on the topic 'LLM Agents for Games'."
 node3 = BaseNode(subtask3, subtask3, graph, LLM_API_FUNCTION, agentkit.compose_prompt.BaseComposePrompt())
 graph.add_node(node3)
 
-
+# add dependencies between nodes
 graph.add_edge(subtask1, subtask2)
 graph.add_edge(subtask1, subtask3)
 graph.add_edge(subtask2, subtask3)

@@ -60,7 +60,7 @@ class JsonAfterQuery(BaseAfterQuery):
             AfterQueryError: If the answer is invalid.
 
         Returns:
-            dict: Parsed Json object.
+            parsed_answer (list of dict): List of Json objects, where the last Json object is the answer.
         """
         parsed_answer, error_msg = extract_json_objects(self.node.result)
         if parsed_answer is None:
