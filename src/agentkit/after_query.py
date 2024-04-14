@@ -44,6 +44,16 @@ class JsonAfterQuery(BaseAfterQuery):
         self.length = None
 
     def parse_json(self):
+        """Parse the result of the LLM query.
+
+        This method parses self.node.result (str) and returns the parsed Json object.
+
+        Raises:
+            AfterQueryError: If the answer is invalid.
+
+        Returns:
+            dict: Parsed Json object.
+        """
         parsed_answer, error_msg = extract_json_objects(self.node.result)
         if parsed_answer is None:
             raise AfterQueryError("Failed to parse answer", error_msg)
