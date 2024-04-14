@@ -1,9 +1,7 @@
 Node in AgentKit
 =====
 
-Node
-----------------
-The basic building block in AgentKit is a node, containing a natural language prompt for a specific subtask.
+The basic building block in AgentKit is a *node*, containing a natural language prompt for a specific subtask.
 The nodes are linked together by the dependency specifications, which specify the order of evaluation.
 Different arrangements of nodes can represent different different logic and throught processes.
 At inference time, AgentKit evaluates all nodes in the order specified by the dependencies as a directed acyclic graph (DAG).
@@ -22,8 +20,7 @@ For example, node :math:`n_{4}` can be designed to Identify the intentions of ot
     :alt: Illustration of what's happening inside a node in AgentKit
 
     Each node in AgentKit takes outputs from its dependencies and outputs a string to complete a predefined subtask. The orange components (After-query) are optional and can be further customized with minimal programming through the AgentKit API. 
-    Left: The evaluation process inside a node consists of compose and after-query. 
-    Right: Nodes can be dynamically added/removed during the inference time. For example, the after-query operation of :math:`n_7` adds a conditional node :math:`n_{+}/n_{-}` based on a yes/no answer from the LLM to the node query. This induces conditional branching.
+    **Left**: The evaluation process inside a node consists of compose and after-query. 
 
 Compose
 ----------------

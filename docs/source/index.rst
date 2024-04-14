@@ -16,4 +16,5 @@ Contents
    Home <self>
    getting started
    node in agentkit
+   dynamic components
    api

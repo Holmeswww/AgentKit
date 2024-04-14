@@ -14,7 +14,7 @@
 [![Docs](https://readthedocs.org/projects/agentkit/badge/?version=latest)](https://agentkit.readthedocs.io/en/latest/?badge=latest)
 [![GitHub license](https://img.shields.io/github/license/holmeswww/agentkit)](https://github.com/holmeswww/AgentKit/blob/main/LICENSE)
 ______________________________________________________________________
-![](https://github.com/Holmeswww/AgentKit/raw/main/imgs/AgentKit.png)
+![](https://github.com/Holmeswww/AgentKit/raw/main/imgs/teaser.png)
 </div>
 
 <img src="https://github.com/Holmeswww/AgentKit/raw/main/imgs/AgentKit.png" width="65px"> offers a unified framework for explicitly constructing a complex human "thought process" from simple natural language prompts.

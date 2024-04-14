@@ -24,6 +24,10 @@ Creating and running a basic graph
 
 The basic building block in AgentKit is a node, containing a natural language prompt for a specific subtask. The nodes are linked together by the dependency specifications, which specify the order of evaluation. Different arrangements of nodes can represent different different logic and throught processes.
 
+.. figure:: https://github.com/Holmeswww/AgentKit/raw/main/imgs/teaser.png
+    :scale: 80 %
+    :alt: Illustration of what's possible with AgentKit
+
 At inference time, AgentKit evaluates all nodes in specified order as a directed acyclic graph (DAG).
 
 .. code-block:: python
