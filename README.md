@@ -96,6 +96,17 @@ usage = {
 # Using AgentKit without Programming Experience
 First, follow [the installation guide](#Installation) to install AgentKit.
 
+Then, run the following to evoke the command line interface (CLI):
+
+```bash
+git clone https://github.com/holmeswww/AgentKit && cd AgentKit
+cd examples/prompt_without_coding
+python generate_graph.py
+```
+![](https://github.com/Holmeswww/AgentKit/raw/main/imgs/screenshot.png)
+
+You need to install openai and/or anthropic API in order to use their LLMs.
+See https://pypi.org/project/openai/ and https://pypi.org/project/anthropic/ for installation guides.
 
 # Node Components
 
