@@ -2,6 +2,7 @@ import json
 import os
 from colorama import Fore, Style, init
 try:
+    import agentkit
     from agentkit import Graph, BaseNode
     import agentkit.llm_api
 except ImportError:

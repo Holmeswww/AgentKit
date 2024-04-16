@@ -32,6 +32,7 @@ At inference time, AgentKit evaluates all nodes in specified order as a directed
 
 .. code-block:: python
    :linenos:
+   import agentkit
 
    from agentkit import Graph, BaseNode
 

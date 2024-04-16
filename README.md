@@ -55,6 +55,7 @@ The basic building block in AgentKit is a node, containing a natural language pr
 At inference time, AgentKit evaluates all nodes in specified order as a directed acyclic graph (DAG).
 
 ```python
+import agentkit
 from agentkit import Graph, BaseNode
 
 import agentkit.llm_api
