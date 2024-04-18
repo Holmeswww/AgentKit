@@ -1,7 +1,7 @@
 <div align="center">
 <img src="https://github.com/Holmeswww/AgentKit/raw/main/imgs/AgentKit.png" width="350px">
 
-**AgentKit: Structured LLM Reasoning with Dynamic Graphs**
+**AgentKit: Flow Engineering with Graphs, not Coding**
 
 <!-- [[Website]](https://TODO.org) -->
 [[Arxiv Paper]](https://arxiv.org/abs/2404.11483)

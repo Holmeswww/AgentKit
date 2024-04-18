@@ -3,7 +3,7 @@ import pkg_resources
 import pathlib
 
 PKG_NAME = "agentkit-llm"
-VERSION = "0.1.3"
+VERSION = "0.1.3d1"
 EXTRAS = {
     "logging": ["wandb"],
 }
@@ -19,7 +19,7 @@ setuptools.setup(
     packages=setuptools.find_namespace_packages('src'),
     package_dir={'': 'src'},
     entry_points={'console_scripts': ['agentkit=agentkit.run_gui:main']},
-    install_requires = ['colorama'],
+    install_requires = ['colorama', 'numpy'],
     extras_require=EXTRAS,
     include_package_data=True,
     license="CC-BY-4.0-Attribution",

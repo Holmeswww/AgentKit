@@ -31,7 +31,6 @@ The basic building block in AgentKit is a node, containing a natural language pr
 At inference time, AgentKit evaluates all nodes in specified order as a directed acyclic graph (DAG).
 
 .. code-block:: python
-   :linenos:
    import agentkit
 
    from agentkit import Graph, BaseNode
@@ -68,8 +67,8 @@ AgentKit tracks token usage of each node through the ``LLM_API_FUNCTION`` with:
 .. code-block:: python
 
    usage = {
-      'prompt': $prompt token counts,
-      'completion': $completion token counts,
+      'prompt': prompt_token_count,
+      'completion': completion_token_count,
    }
 
 
