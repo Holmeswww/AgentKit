@@ -4,8 +4,8 @@
 **AgentKit: Structured LLM Reasoning with Dynamic Graphs**
 
 <!-- [[Website]](https://TODO.org) -->
-[[Arxiv Paper]](TODO)
-[[PDF]](TODO)
+[[Arxiv Paper]](https://arxiv.org/abs/2404.11483)
+[[PDF]](https://arxiv.org/pdf/2404.11483.pdf)
 [[Docs]](https://agentkit.readthedocs.io/)
 
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/agentkit-llm)](https://pypi.org/project/agentkit-llm/)
@@ -118,5 +118,10 @@ To support advanced capabilities such as branching, AgentKit offers API to dynam
 
 # Citing AgentKit
 ```bibtex
-TBD
+@article{wu2024agentkit,
+    title={AgentKit: Flow Engineering with Graphs, not Coding}, 
+    author={Yue Wu and Yewen Fan and So Yeon Min and Shrimai Prabhumoye and Stephen McAleer and Yonatan Bisk and Ruslan Salakhutdinov and Yuanzhi Li and Tom Mitchell},
+    year={2024},
+    journal={arXiv preprint arXiv:2404.11483}
+}
 ```
