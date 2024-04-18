@@ -3,7 +3,7 @@ import pkg_resources
 import pathlib
 
 PKG_NAME = "agentkit-llm"
-VERSION = "0.1.3d1"
+VERSION = "0.1.3rc1"
 EXTRAS = {
     "logging": ["wandb"],
 }
