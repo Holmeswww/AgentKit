@@ -3,14 +3,13 @@
 
 **AgentKit: Flow Engineering with Graphs, not Coding**
 
-<!-- [[Website]](https://TODO.org) -->
 [[Arxiv Paper]](https://arxiv.org/abs/2404.11483)
 [[PDF]](https://arxiv.org/pdf/2404.11483.pdf)
 [[Docs]](https://agentkit.readthedocs.io/)
 
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/agentkit-llm)](https://pypi.org/project/agentkit-llm/)
 [![PyPI](https://img.shields.io/pypi/v/agentkit-llm)](https://pypi.org/project/agentkit-llm/)
-[![PyPI Status](https://pepy.tech/badge/agentkit-llm)](https://pepy.tech/project/agentkit-llm)
+[![PyPI Status](https://static.pepy.tech/badge/agentkit-llm)](https://pepy.tech/project/agentkit-llm)
 [![Docs](https://readthedocs.org/projects/agentkit/badge/?version=latest)](https://agentkit.readthedocs.io/en/latest/?badge=latest)
 [![GitHub license](https://img.shields.io/github/license/holmeswww/agentkit)](https://github.com/holmeswww/AgentKit/blob/main/LICENSE)
 ______________________________________________________________________
