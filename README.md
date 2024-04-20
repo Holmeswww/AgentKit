@@ -124,3 +124,13 @@ To support advanced capabilities such as branching, AgentKit offers API to dynam
     journal={arXiv preprint arXiv:2404.11483}
 }
 ```
+
+# Star History
+
+<a href="https://star-history.com/#holmeswww/agentkit&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=holmeswww/agentkit&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=holmeswww/agentkit&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=holmeswww/agentkit&type=Date" />
+ </picture>
+</a>
