@@ -12,6 +12,18 @@ Installing the AgentKit stable version is as simple as:
 
    pip install agentkit-llm
 
+To install AgentKit with wandb:
+
+.. code-block:: console
+
+   pip install agentkit-llm[logging]
+
+To install AgentKit with built-in LLM-API support:
+
+.. code-block:: console
+
+   pip install agentkit-llm[all]
+
 Otherwise, to install the cutting edge version from the main branch of this repo, run:
 
 .. code-block:: console
@@ -61,6 +73,14 @@ At inference time, AgentKit evaluates all nodes in specified order as a directed
    graph.add_edge(subtask2, subtask3)
 
    result = graph.evaluate() # outputs a dictionary of prompt, answer pairs
+
+The built-in ``agentkit.llm_api`` functions require installing with ``[all]`` setting.
+
+Currently, the built-in API supports OpenAI and Anthropic, see https://pypi.org/project/openai/ and https://pypi.org/project/anthropic/ for details.
+
+To use the OpenAI models, set environment variables ``OPENAI_KEY`` and ``OPENAI_ORG``. Alternatively, you can put the openai 'key' and 'organization' in the first 2 lines of ``~/.openai/openai.key``.
+
+To use the Anthropic models, set environment variable ``ANTHROPIC_KEY``. Alternatively, you can put the anthropic 'key' in 3rd line of ``~/.openai/openai.key``.
 
 ``LLM_API_FUNCTION`` can be any LLM querying function that takes ``msg:list`` and ``shrink_idx:int``, and outputs ``llm_result:str`` and ``usage:dict``. Where ``msg`` is a prompt (`OpenAI format`_ by default), and ``shrink_idx:int`` is an index at which the LLM should reduce the length of the prompt in case of overflow. 
 

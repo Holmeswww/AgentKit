@@ -7,14 +7,21 @@ from .utils import match_model
 import time
 from .base import BaseModel
 
-if not os.path.exists(os.path.join(os.path.expanduser('~'), ".openai/openai.key")):
-    raise FileNotFoundError("Please create a file at ~/.openai/openai.key with your OpenAI API key and organization ID. The third line should be your anthropic API key.")
+if os.environ.get("ANTHROPIC_KEY") is None:
+    print("Environment variable for Anthropic key not found, using Anthropic API key from ~/.openai/openai.key.")
+    if not os.path.exists(os.path.join(os.path.expanduser('~'), ".openai/openai.key")):
+        raise FileNotFoundError("Please create a file at ~/.openai/openai.key with your OpenAI API key and organization ID. The third line should be your anthropic API key.")
+    else:
+        with open(os.path.join(os.path.expanduser('~'), ".openai/openai.key"), 'r') as f:
+            org_key = f.readlines()
+            ANTHROPIC_KEY = org_key[2].strip()
+else:
+    print("Using Anthropic API key from environment variable.")
+    ANTHROPIC_KEY = os.environ.get("ANTHROPIC_KEY")
 
-with open(os.path.join(os.path.expanduser('~'), ".openai/openai.key"), 'r') as f:
-    org_key = f.readlines()
-    client = anthropic.Anthropic(
-        api_key=org_key[2].strip(),
-    )
+client = anthropic.Anthropic(
+    api_key=ANTHROPIC_KEY,
+)
 
 class Claude_chat(BaseModel):
 

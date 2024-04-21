@@ -3,9 +3,10 @@ import pkg_resources
 import pathlib
 
 PKG_NAME = "agentkit-llm"
-VERSION = "0.1.3.post1"
+VERSION = "0.1.4"
 EXTRAS = {
     "logging": ["wandb"],
+    "all": ["wandb", "openai", "anthropic", "tiktoken"],
 }
 
 setuptools.setup(

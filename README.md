@@ -28,8 +28,9 @@ A basic agent could be implemented as simple as a list of prompts for the subtas
 
 - [Installation](#Installation)
 - [Getting Started](#Getting-Started)
-- [Node Components](#Node-Components)
+- [Using Built-in LLM_API](#Built-in-LLM-API)
 - [Using AgentKit without Programming Experience](#Using-AgentKit-without-Programming-Experience)
+- [Node Components](#Node-Components)
 - [Citing AgnetKit](#Citing-AgentKit)
 
 # Installation
@@ -38,6 +39,18 @@ Installing the AgentKit stable version is as simple as:
 
 ```bash
 pip install agentkit-llm
+```
+
+To install AgentKit with wandb:
+
+```bash
+pip install agentkit-llm[logging]
+```
+
+To install AgentKit with built-in LLM-API support:
+
+```bash
+pip install agentkit-llm[all]
 ```
 
 Otherwise, to install the cutting edge version from the main branch of this repo, run:
@@ -93,10 +106,23 @@ usage = {
 }
 ```
 
-# Using AgentKit without Programming Experience
-First, follow [the installation guide](#Installation) to install AgentKit.
+# Built-in LLM-API
 
-Then, run the following to evoke the command line interface (CLI):
+The built-in `agentkit.llm_api` functions require installing with `[all]` setting. See [the installation guide](#Installation) for details.
+
+Currently, the built-in API supports OpenAI and Anthropic, see https://pypi.org/project/openai/ and https://pypi.org/project/anthropic/ for details.
+
+To use the OpenAI models, set environment variables `OPENAI_KEY` and `OPENAI_ORG`. Alternatively, you can put the openai 'key' and 'organization' in the first 2 lines of `~/.openai/openai.key`.
+
+To use the Anthropic models, set environment variable `ANTHROPIC_KEY`. Alternatively, you can put the anthropic 'key' in 3rd line of `~/.openai/openai.key`.
+
+# Using AgentKit without Programming Experience
+
+First, follow [the installation guide](#Installation) to install AgentKit with `[all]` setting.
+
+Then, set environment variables `OPENAI_KEY` and `OPENAI_ORG` to be your OpenAI key and org_key.
+
+Finally, run the following to evoke the command line interface (CLI):
 
 ```bash
 git clone https://github.com/holmeswww/AgentKit && cd AgentKit
@@ -104,9 +130,6 @@ cd examples/prompt_without_coding
 python generate_graph.py
 ```
 ![](https://github.com/Holmeswww/AgentKit/raw/main/imgs/screenshot.png)
-
-You need to install openai and/or anthropic API in order to use their LLMs.
-See https://pypi.org/project/openai/ and https://pypi.org/project/anthropic/ for installation guides.
 
 # Node Components
 

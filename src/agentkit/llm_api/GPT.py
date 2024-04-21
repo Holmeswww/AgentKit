@@ -8,15 +8,23 @@ import os
 from .utils import match_model
 from .base import BaseModel
 
-if not os.path.exists(os.path.join(os.path.expanduser('~'), ".openai/openai.key")):
-    raise FileNotFoundError("Please create a file at ~/.openai/openai.key with your OpenAI API key and organization ID. The first line should be your API key and the second line should be your organization ID.")
-
-with open(os.path.join(os.path.expanduser('~'), ".openai/openai.key"), 'r') as f:
-    org_key = f.readlines()
-    client = OpenAI(
-        api_key=org_key[0].strip(),
-        organization=org_key[1].strip(),
-    )
+if os.environ.get("OPENAI_KEY") is None:
+    print("Environment variable for OpenAI key not found, using OpenAI API key from ~/.openai/openai.key.")
+    if not os.path.exists(os.path.join(os.path.expanduser('~'), ".openai/openai.key")):
+        raise FileNotFoundError("Please create a file at ~/.openai/openai.key with your OpenAI API key and organization ID. The first line should be your API key and the second line should be your organization ID.")
+    else:
+        with open(os.path.join(os.path.expanduser('~'), ".openai/openai.key"), 'r') as f:
+            org_key = f.readlines()
+            OpenAI_KEY = org_key[0].strip()
+            OpenAI_ORG = org_key[1].strip()
+else:
+    print("Using OpenAI API key from environment variable.")
+    OpenAI_KEY = os.environ.get("OPENAI_KEY")
+    OpenAI_ORG = os.environ.get("OPENAI_ORG")
+client = OpenAI(
+    api_key=OpenAI_KEY,
+    organization=OpenAI_ORG,
+)
 
 class GPT_chat(BaseModel):
 
