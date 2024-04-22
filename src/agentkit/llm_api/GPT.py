@@ -52,7 +52,9 @@ class GPT_chat(BaseModel):
                     max_tokens=max_gen,
                 )
                 return completion.choices[0].message.content, {"prompt":completion.usage.prompt_tokens, "completion":completion.usage.completion_tokens, "total":completion.usage.total_tokens}
-            except (openai.RateLimitError, openai.APIStatusError, openai.APITimeoutError, openai.APIConnectionError, openai.InternalServerError):
+            except openai.AuthenticationError as e:
+                raise e
+            except (openai.RateLimitError, openai.APIStatusError, openai.APITimeoutError, openai.APIConnectionError, openai.InternalServerError) as e:
                 time.sleep(30)
             except Exception as e:
                 e = str(e)

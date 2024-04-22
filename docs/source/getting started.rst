@@ -51,7 +51,7 @@ At inference time, AgentKit evaluates all nodes in specified order as a directed
 
    import agentkit.llm_api
 
-   LLM_API_FUNCTION = agentkit.llm_api.get_query("gpt-4")
+   LLM_API_FUNCTION = agentkit.llm_api.get_query("gpt-4-turbo")
 
    graph = Graph()
 

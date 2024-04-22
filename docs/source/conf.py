@@ -11,7 +11,7 @@ copyright = '2024, AgentKit Developers'
 author = 'Yue Wu'
 
 release = '0.1'
-version = '0.1.4'
+version = '0.1.5'
 
 # -- General configuration
 
