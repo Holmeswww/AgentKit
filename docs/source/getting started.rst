@@ -80,6 +80,8 @@ Currently, the built-in API supports OpenAI and Anthropic, see https://pypi.org/
 
 To use the OpenAI models, set environment variables ``OPENAI_KEY`` and ``OPENAI_ORG``. Alternatively, you can put the openai 'key' and 'organization' in the first 2 lines of ``~/.openai/openai.key``.
 
+To use the Azure OpenAI models, set environment variables ``AZURE_OPENAI_API_KEY``, ``AZURE_OPENAI_API_VERSION``, ``AZURE_OPENAI_ENDPOINT``, and ``AZURE_DEPLOYMENT_NAME``. Alternatively, you can store the Azure OpenAI API key, API version, Azure endpoint, and deployment name in the first 4 lines of ``~/.openai/azure_openai.key``.
+
 To use the Anthropic models, set environment variable ``ANTHROPIC_KEY``. Alternatively, you can put the anthropic 'key' in 3rd line of ``~/.openai/openai.key``.
 
 ``LLM_API_FUNCTION`` can be any LLM querying function that takes ``msg:list`` and ``shrink_idx:int``, and outputs ``llm_result:str`` and ``usage:dict``. Where ``msg`` is a prompt (`OpenAI format`_ by default), and ``shrink_idx:int`` is an index at which the LLM should reduce the length of the prompt in case of overflow. 
