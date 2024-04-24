@@ -10,6 +10,7 @@ class BaseModel:
         assert model_type in ["chat", "completion"], "type should be either 'chat' or 'completion'"
         self.type = model_type
         self.global_counter = global_conter
+        self.debug = False
     
     def query_chat(self, messages, shrink_idx, model, max_gen=1024, temp=0.):
         raise NotImplementedError

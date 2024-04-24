@@ -96,12 +96,15 @@ class GPT_chat(BaseModel):
                         max_tokens=max_gen,
                     )
                 return completion.choices[0].message.content, {"prompt":completion.usage.prompt_tokens, "completion":completion.usage.completion_tokens, "total":completion.usage.total_tokens}
-            except (openai.RateLimitError, openai.APIStatusError, openai.APITimeoutError, openai.APIConnectionError, openai.InternalServerError):
-                time.sleep(30)
             except Exception as e:
-                e = str(e)
-                if "However, your messages resulted in" in e:
-                    print("error:", e)
+                if self.debug:
+                    raise e
+                elif isinstance(e, openai.RateLimitError) or isinstance(e, openai.APIStatusError) or isinstance(e, openai.APITimeoutError) or isinstance(e, openai.APIConnectionError) or isinstance(e, openai.InternalServerError):
+                    time.sleep(30)
+                    print(e)
+                elif "However, your messages resulted in" in str(e):
+                    print("error:", e, str(e))
+                    e = str(e)
                     index = e.find("your messages resulted in ")
                     import re
                     val = int(re.findall(r'\d+', e[index + len("your messages resulted in ") : ])[0])
@@ -109,5 +112,6 @@ class GPT_chat(BaseModel):
                     model_max = int(re.findall(r'\d+', e[index2 + len("maximum context length is "):])[0])
                     messages = self.shrink_msg_by(messages, shrink_idx, val-model_max)
                 else:
+                    print("error:", e)
+                    print("retrying in 5 seconds")
                     time.sleep(5)
-                    print(e)

@@ -89,14 +89,16 @@ class Claude_chat(BaseModel):
                     max_tokens=max_gen,
                 )
                 return message.content[0].text, {"prompt":message.usage.input_tokens, "completion":message.usage.output_tokens, "total":message.usage.input_tokens+message.usage.output_tokens}
-            except (anthropic.APIConnectionError, anthropic.APIStatusError, anthropic.InternalServerError) as e:
-                time.sleep(30)
-            except anthropic.RateLimitError as e:
-                time.sleep(5*60)
             except Exception as e:
-                e = str(e)
-                if "However, your messages resulted in" in e:
-                    print("error:", e)
+                if self.debug:
+                    raise e
+                elif isinstance(e, anthropic.APIConnectionError) or isinstance(e, anthropic.APIStatusError) or isinstance(e, anthropic.InternalServerError):
+                    time.sleep(30)
+                elif isinstance(e, anthropic.RateLimitError):
+                    time.sleep(5*60)
+                elif "However, your messages resulted in" in str(e):
+                    print("error:", e, str(e))
+                    e = str(e)
                     index = e.find("your messages resulted in ")
                     import re
                     val = int(re.findall(r'\d+', e[index + len("your messages resulted in ") : ])[0])

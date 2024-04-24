@@ -31,6 +31,7 @@ A basic agent could be implemented as simple as a list of prompts for the subtas
 - [Using Built-in LLM_API](#Built-in-LLM-API)
 - [Using AgentKit without Programming Experience](#Using-AgentKit-without-Programming-Experience)
 - [Node Components](#Node-Components)
+- [Commonly Asked Questions](#Commonly-Asked-Questions)
 - [Citing AgnetKit](#Citing-AgentKit)
 
 # Installation
@@ -139,6 +140,12 @@ python generate_graph.py
 Inside each node (as shown to the left of the figure), AgentKit runs a built-in flow that **preprocesses** the input (Compose), queries the LLM with a preprocessed input and prompt $q_v$, and optionally **postprocesses** the output of the LLM (After-query).
 
 To support advanced capabilities such as branching, AgentKit offers API to dynamically modify the DAG at inference time (as shown to the right of the figure). Nodes/edges could be dynamically added or removed based on the LLM response at some ancestor nodes.
+
+# Commonly Asked Questions
+
+**Q:** I'm using the default `agentkit.llm_api`, and `graph.evaluate()` seems to be stuck.
+
+**A:** The LLM_API function catches and retries all API errors by default. Set `verbose=True` for each node to see which node you are stuck on, and `LLM_API_FUNCTION.debug=True` to see what error is causing the error.
 
 # Citing AgentKit
 ```bibtex
