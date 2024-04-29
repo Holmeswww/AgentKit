@@ -16,6 +16,7 @@ enc_fns = {
     "gpt-3.5-turbo-0125":tiktoken.encoding_for_model("gpt-3.5-turbo"),
     "claude-3": None,
     "claude-2.1": None,
+    "ollama": None,
 }
 model_maxes = {
     "gpt-4":8192,
@@ -37,10 +38,13 @@ def match_model(model_name):
     print("Matched model name to: ", matches)
     matches += [model for model in model_maxes.keys() if model_name.startswith(model)]
     if len(matches) == 0:
-        raise ValueError("Model name {} not found!".format(model_name))
+        print("No model found! Assuming Ollama and attempting to pull.")
+        model = model_name.replace('ollama:','')
+        model_max = 8192 # arbitrary large number
+        enc_fn = None
     else:
         model = matches[0]
-    
-    model_max = model_maxes[model]
-    enc_fn = enc_fns[model]
+        model_max = model_maxes[model]
+        enc_fn = enc_fns[model]
+        
     return model_max, enc_fn

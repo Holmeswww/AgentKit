@@ -8,12 +8,6 @@ def get_token_counts():
     global token_counter
     return token_counter
 
-def get_query(LLM_name):
-    global token_counter
-    token_counter["token_completion"][LLM_name] = 0
-    token_counter["token_prompt"][LLM_name] = 0
-    token_counter["api_calls"][LLM_name] = 0
-
 def query_gpt_chat(model):
     from .GPT import GPT_chat
     global token_counter
@@ -26,7 +20,13 @@ def query_claude_chat(model):
     query_model = Claude_chat(model, token_counter)
     return query_model
 
-def get_query(LLM_name):
+def query_llama_chat(model,ollama_url, tokenmodel_path):
+    from .ollama import Ollama_chat
+    global token_counter
+    query_model = Ollama_chat(model, ollama_url, tokenmodel_path, token_counter)
+    return query_model
+
+def get_query(LLM_name, ollama_url=None, tokenmodel_path=None):
     """Get the query model for the specified LLM_name.
 
     Currently supported LLMs:
@@ -36,9 +36,12 @@ def get_query(LLM_name):
     - GPT-3.5
 
     - Claude
+
+    - Ollama
     
     Args:
         LLM_name (str): Name of the LLM model
+        tokenmodel_path (str): Path to the token model
     
     Returns:
         LLM_API_FUNCTION: The query model for the specified LLM_name
@@ -52,5 +55,7 @@ def get_query(LLM_name):
         return query_gpt_chat(model=LLM_name)
     elif LLM_name.lower().startswith("claude"):
         return query_claude_chat(model=LLM_name)
+    elif LLM_name.lower().startswith("ollama"):
+        return query_llama_chat(model=LLM_name,ollama_url=ollama_url,tokenmodel_path=tokenmodel_path)
     else:
         raise NotImplementedError("LLM {} not implemented".format(LLM_name))
