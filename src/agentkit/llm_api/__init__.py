@@ -56,6 +56,10 @@ def get_query(LLM_name, ollama_url=None, tokenmodel_path=None):
     elif LLM_name.lower().startswith("claude"):
         return query_claude_chat(model=LLM_name)
     elif LLM_name.lower().startswith("ollama"):
+        model_name = LLM_name.replace('ollama:','')
+        token_counter["token_completion"][model_name] = 0
+        token_counter["token_prompt"][model_name] = 0
+        token_counter["api_calls"][model_name] = 0
         return query_llama_chat(model=LLM_name,ollama_url=ollama_url,tokenmodel_path=tokenmodel_path)
     else:
         raise NotImplementedError("LLM {} not implemented".format(LLM_name))

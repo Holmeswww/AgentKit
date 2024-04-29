@@ -14,6 +14,8 @@ class Ollama_chat(BaseModel):
 
     def __init__(self, model_name, ollama_url, tokenmodel_path, global_counter=None):
         model_max, enc_fn = match_model(model_name)
+        model_name = model_name.replace('ollama:','')
+        self.model_name = model_name
         self.name = model_name
         self.sp_model = Tokenizer(tokenmodel_path)
         self.url = f'{ollama_url}/api/chat'
@@ -33,6 +35,7 @@ class Ollama_chat(BaseModel):
             try:
                 ollama_body = {"messages": messages, "model": self.name, "stream": False}
                 completion = requests.post(self.url,json=ollama_body)
+                print(ollama_body)
                 response = json.loads(completion.content.decode('utf-8'))
                 content = response['message']['content']
 

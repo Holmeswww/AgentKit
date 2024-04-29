@@ -28,6 +28,7 @@ model_maxes = {
     "gpt-3.5-turbo-0125":16385,
     "claude-3":50000,
     "claude-2.1":50000,
+    "ollama":8192,
 }
 
 def match_model(model_name):
@@ -38,13 +39,10 @@ def match_model(model_name):
     print("Matched model name to: ", matches)
     matches += [model for model in model_maxes.keys() if model_name.startswith(model)]
     if len(matches) == 0:
-        print("No model found! Assuming Ollama and attempting to pull.")
-        model = model_name.replace('ollama:','')
-        model_max = 8192 # arbitrary large number
-        enc_fn = None
+        raise ValueError("Model name {} not found!".format(model_name))
     else:
         model = matches[0]
-        model_max = model_maxes[model]
-        enc_fn = enc_fns[model]
-        
+
+    model_max = model_maxes[model]
+    enc_fn = enc_fns[model]
     return model_max, enc_fn
