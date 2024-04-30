@@ -81,15 +81,15 @@ class GPT_chat(BaseModel):
         messages = self.shrink_msg(messages, shrink_idx, model_max-max_gen)
         while(True):
             try:
-                if isinstance(client, OpenAI):
+                if os.environ.get("OPENAI_KEY"):
                     completion = client.chat.completions.create(
                         model=self.name,
                         messages=messages,
                         temperature=temp,
                         max_tokens=max_gen,
                     )
-                elif isinstance(client, AzureOpenAI):
-                    completion = client.completions.create(
+                elif os.environ.get("AZURE_OPENAI_API_KEY"):
+                    completion = client.chat.completions.create(
                         model=deployment_name,
                         messages=messages,
                         temperature=temp,
