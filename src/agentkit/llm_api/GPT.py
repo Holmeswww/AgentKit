@@ -81,20 +81,12 @@ class GPT_chat(BaseModel):
         messages = self.shrink_msg(messages, shrink_idx, model_max-max_gen)
         while(True):
             try:
-                if isinstance(client, OpenAI):
-                    completion = client.chat.completions.create(
-                        model=self.name,
-                        messages=messages,
-                        temperature=temp,
-                        max_tokens=max_gen,
-                    )
-                elif isinstance(client, AzureOpenAI):
-                    completion = client.completions.create(
-                        model=deployment_name,
-                        messages=messages,
-                        temperature=temp,
-                        max_tokens=max_gen,
-                    )
+                completion = client.chat.completions.create(
+                    model=deployment_name if deployment_name else self.name,
+                    messages=messages,
+                    temperature=temp,
+                    max_tokens=max_gen,
+                )
                 return completion.choices[0].message.content, {"prompt":completion.usage.prompt_tokens, "completion":completion.usage.completion_tokens, "total":completion.usage.total_tokens}
             except Exception as e:
                 if self.debug:
