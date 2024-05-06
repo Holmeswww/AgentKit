@@ -16,6 +16,7 @@ enc_fns = {
     "gpt-3.5-turbo-0125":tiktoken.encoding_for_model("gpt-3.5-turbo"),
     "claude-3": None,
     "claude-2.1": None,
+    "ollama": None,
 }
 model_maxes = {
     "gpt-4":8192,
@@ -27,6 +28,7 @@ model_maxes = {
     "gpt-3.5-turbo-0125":16385,
     "claude-3":50000,
     "claude-2.1":50000,
+    "ollama":8192,
 }
 
 def match_model(model_name):
@@ -34,13 +36,13 @@ def match_model(model_name):
     # match model name to the closest string in enc_fns.keys()
     model_name = model_name.lower()
     matches = difflib.get_close_matches(model_name, enc_fns.keys())
-    print("Matched model name to: ", matches)
     matches += [model for model in model_maxes.keys() if model_name.startswith(model)]
     if len(matches) == 0:
         raise ValueError("Model name {} not found!".format(model_name))
     else:
         model = matches[0]
-    
+    print("Matched model_name {} to: {}. If this match is not accurate, then the token counter will not function properly.".format(model_name, model))
+
     model_max = model_maxes[model]
     enc_fn = enc_fns[model]
     return model_max, enc_fn

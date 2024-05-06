@@ -3,10 +3,11 @@ import pkg_resources
 import pathlib
 
 PKG_NAME = "agentkit-llm"
-VERSION = "0.1.6.post2"
+VERSION = "0.1.7"
 EXTRAS = {
     "logging": ["wandb"],
-    "all": ["wandb", "openai", "anthropic", "tiktoken"],
+    "proprietary": ["wandb", "openai", "anthropic", "tiktoken"],
+    "all": ["wandb", "openai", "anthropic", "tiktoken", "llama"],
 }
 
 setuptools.setup(
@@ -14,7 +15,7 @@ setuptools.setup(
     version=VERSION,
     author="AgentKit Team",
     description='A LLM prompting framework for LLM agents',
-    url="https://github.com/Holmeswww/AgentKit",
+    url="https://github.com/rhyswynn/AgentKit",
     long_description=pathlib.Path('README.md').read_text(),
     long_description_content_type='text/markdown',
     packages=setuptools.find_namespace_packages('src'),

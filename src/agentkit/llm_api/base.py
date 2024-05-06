@@ -11,6 +11,10 @@ class BaseModel:
         self.type = model_type
         self.global_counter = global_conter
         self.debug = False
+        if self.global_counter is not None:
+            self.global_counter["token_completion"][self.name] = 0
+            self.global_counter["token_prompt"][self.name] = 0
+            self.global_counter["api_calls"][self.name] = 0
     
     def query_chat(self, messages, shrink_idx, model, max_gen=1024, temp=0.):
         raise NotImplementedError

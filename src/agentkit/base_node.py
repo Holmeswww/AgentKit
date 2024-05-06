@@ -93,10 +93,12 @@ class BaseNode:
         return self._compose_prompt(dependencies=self.get_dependencies(), prompt=self.prompt)
 
     def _print_question(self):
+        print(f"Processing node {self.key}...")
         if self.verbose:
             print(Fore.CYAN + "Prompt: " + Style.DIM + "{}".format(self.prompt) + Style.RESET_ALL)
     
     def _print_answer(self, msg):
+        print(f"Finished processing node {self.key}")
         if self.verbose:
             print("Answer: " + Style.DIM + "{}".format(msg) + Style.RESET_ALL)
     
