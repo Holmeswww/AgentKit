@@ -117,7 +117,7 @@ usage = {
 
 # Built-in LLM-API
 
-The built-in `agentkit.llm_api` functions require installing with `[all]` or `[proprietary]` setting. See [the installation guide](#Installation) for details.
+The built-in `agentkit.llm_api` functions require installing with `[proprietary]` or `[all]` setting. See [the installation guide](#Installation) for details.
 
 Currently, the built-in API supports OpenAI and Anthropic, see https://pypi.org/project/openai/ and https://pypi.org/project/anthropic/ for details.
 
