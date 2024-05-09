@@ -42,7 +42,7 @@ class Ollama_chat(BaseModel):
 
         tokenmodel_path, ollama_url = initialize_client()
         model_max, enc_fn = match_model(model_name)
-        model_name = model_name.replace('ollama:','')
+        model_name = model_name.replace('ollama-','')
         self.model_name = model_name
         self.name = model_name
         self.sp_model = Tokenizer(tokenmodel_path)

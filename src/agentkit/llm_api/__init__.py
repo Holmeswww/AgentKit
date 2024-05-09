@@ -23,11 +23,11 @@ def query_claude_chat(model):
 def query_ollama_chat(model):
     from .ollama import Ollama_chat
     global token_counter
-    model = model.replace('ollama:','')
+    #model = model.replace('ollama-','')
     query_model = Ollama_chat(model, token_counter)
     return query_model
 
-def get_query(LLM_name, ollama_url=None, tokenmodel_path=None):
+def get_query(LLM_name):
     """Get the query model for the specified LLM_name.
 
     Currently supported LLMs:
@@ -53,6 +53,6 @@ def get_query(LLM_name, ollama_url=None, tokenmodel_path=None):
     elif LLM_name.lower().startswith("claude"):
         return query_claude_chat(model=LLM_name)
     elif LLM_name.lower().startswith("ollama-"):
-        return query_ollama_chat(model=LLM_name,ollama_url=ollama_url,tokenmodel_path=tokenmodel_path)
+        return query_ollama_chat(model=LLM_name)
     else:
         raise NotImplementedError("LLM {} not implemented".format(LLM_name))

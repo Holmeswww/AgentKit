@@ -35,6 +35,8 @@ def match_model(model_name):
 
     # match model name to the closest string in enc_fns.keys()
     model_name = model_name.lower()
+    if model_name.startswith('ollama'):
+    	model_name = 'ollama'
     matches = difflib.get_close_matches(model_name, enc_fns.keys())
     matches += [model for model in model_maxes.keys() if model_name.startswith(model)]
     if len(matches) == 0:
