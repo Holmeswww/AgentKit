@@ -8,7 +8,7 @@ import difflib
 
 enc_fns = {
     "gpt-4":tiktoken.encoding_for_model("gpt-4"),
-    "gpt-4-o":tiktoken.encoding_for_model("gpt-4"),
+    "gpt-4o":tiktoken.encoding_for_model("gpt-4"),
     "gpt-4-turbo":tiktoken.encoding_for_model("gpt-4"),
     "gpt-4-1106-preview":tiktoken.encoding_for_model("gpt-4"),
     "gpt-4-32k-0613":tiktoken.encoding_for_model("gpt-4"),
@@ -21,7 +21,7 @@ enc_fns = {
 }
 model_maxes = {
     "gpt-4":8192,
-    "gpt-4-o":128000,
+    "gpt-4o":128000,
     "gpt-4-turbo":128000,
     "gpt-4-1106-preview":128000,
     "gpt-4-32k-0613":32768,
