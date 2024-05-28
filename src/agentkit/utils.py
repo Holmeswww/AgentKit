@@ -1,4 +1,6 @@
 import json
+import traceback
+
 def extract_json_objects(input_string):
     try:
         # Initialize variables
