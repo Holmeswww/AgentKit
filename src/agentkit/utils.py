@@ -1,7 +1,18 @@
 import json
 import traceback
+import re
 
 def extract_json_objects(input_string):
+    pattern = r'```json(.*?)```'
+    match = re.search(pattern, input_string, re.DOTALL)
+    if match:
+        json_data = match.group(1).strip()
+        try:
+            parsed_json = [json.loads(json_data)]
+            return parsed_json, None
+        except Exception as e:
+            return None, "Error: {}\nTraceback: {}".format(e, traceback.format_exc())
+
     try:
         # Initialize variables
         json_objects = []
