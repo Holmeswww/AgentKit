@@ -31,7 +31,8 @@ class BaseNode:
         _compose_prompt (BaseComposePrompt): ComposePrompt object.
         after_query (BaseAfterQuery): AfterQuery object.
         error_msg_fn (Callable): Function to add error message to the prompt.
-        verbose (bool): Verbose flag.
+        verbose (bool): Verbose flag. Node will print the prompt and answer.
+        markdown (bool): Markdown flag. Enables markdown output.
         token_counter (Callable): Function to count tokens.
     """
     def __init__(self, key:str, prompt:str, graph:Graph, query_llm:Callable, compose_prompt:BaseComposePrompt, after_query:BaseAfterQuery=None, error_msg_fn:Callable[[list,str,AfterQueryError],list]=error_msg_default, verbose:bool=False, token_counter:Callable=None):
