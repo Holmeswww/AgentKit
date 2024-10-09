@@ -163,11 +163,11 @@ To support advanced capabilities such as branching, AgentKit offers API to dynam
 
 # Citing AgentKit
 ```bibtex
-@article{wu2024agentkit,
-    title={AgentKit: Flow Engineering with Graphs, not Coding}, 
-    author={Yue Wu and Yewen Fan and So Yeon Min and Shrimai Prabhumoye and Stephen McAleer and Yonatan Bisk and Ruslan Salakhutdinov and Yuanzhi Li and Tom Mitchell},
-    year={2024},
-    journal={arXiv preprint arXiv:2404.11483}
+@inproceedings{agentkit,
+  title = {AgentKit: Flow Engineering with Graphs, not Coding},
+  author = {Wu, Yue and Fan, Yewen and Min, So Yeon and Prabhumoye, Shrimai and McAleer, Stephen and Bisk, Yonatan and Salakhutdinov, Ruslan and Li, Yuanzhi and Mitchell, Tom},
+  year = {2024},
+  booktitle = {COLM},
 }
 ```
 

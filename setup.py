@@ -3,7 +3,7 @@ import pkg_resources
 import pathlib
 
 PKG_NAME = "agentkit-llm"
-VERSION = "0.1.8"
+VERSION = "0.1.8.1"
 EXTRAS = {
     "logging": ["wandb"],
     "proprietary": ["wandb", "openai", "anthropic", "tiktoken"],

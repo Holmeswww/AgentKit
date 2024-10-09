@@ -66,6 +66,7 @@ class BaseNode:
             self.after_query = after_query
             self.after_query.set_node(self)
         self.verbose = verbose
+        self.markdown = False
         self._add_error_msg = error_msg_fn
         
         if token_counter is not None:
@@ -94,15 +95,24 @@ class BaseNode:
 
     def _print_question(self):
         if self.verbose:
-            print(Fore.CYAN + "Prompt: " + Style.DIM + "{}".format(self.prompt) + Style.RESET_ALL)
+            if self.markdown:
+                print("\n### Prompt\n" + "<span style='color:green;'>\n{}\n</span>".format(self.prompt))
+            else:
+                print(Fore.CYAN + "Prompt: " + Style.DIM + "{}".format(self.prompt) + Style.RESET_ALL)
     
     def _print_answer(self, msg):
         if self.verbose:
-            print("Answer: " + Style.DIM + "{}".format(msg) + Style.RESET_ALL)
+            if self.markdown:
+                print("\n#### Answer\n" + "<span style='color: #d7dbdd;'>\n{}\n</span>".format(msg))
+            else:
+                print("Answer: " + Style.DIM + "{}".format(msg) + Style.RESET_ALL)
     
     def _print_skip(self):
         if self.verbose:
-            print("Skip: " + Style.DIM + "{}".format(self.prompt) + Style.RESET_ALL)
+            if self.markdown:
+                print("\n### Skip\n" + "{}".format(self.prompt))
+            else:
+                print("Skip: " + Style.DIM + "{}".format(self.prompt) + Style.RESET_ALL)
     
     def skip_turn(self):
         """Temporarily skip the node evaluation. The previous result of the node will be reused.

@@ -43,5 +43,11 @@ class SimpleDBNode(BaseNode):
     def _print_answer(self, msg):
         if self.verbose:
             if hasattr(self, 'db_retrieval_results') and len(self.db_retrieval_results) > 0:
-                print("DB operations: " + Style.DIM + Fore.BLUE + "{}".format(self.db_retrieval_results) + Style.RESET_ALL)
-            print("Answer: " + Style.DIM + "{}".format(msg) + Style.RESET_ALL)
+                if self.markdown:
+                    print(f"\n##### DB operations\n<span style='color: #76d7c4;'>\n{self.db_retrieval_results}\n</span>")
+                else:
+                    print("DB operations: " + Style.DIM + Fore.BLUE + "{}".format(self.db_retrieval_results) + Style.RESET_ALL)
+            if self.markdown:
+                print("\n#### Answer\n<span style='color: #d7dbdd;'>\n{}\n</span>".format(msg))
+            else:
+                print("Answer: " + Style.DIM + "{}".format(msg) + Style.RESET_ALL)
