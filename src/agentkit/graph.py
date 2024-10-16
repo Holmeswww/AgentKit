@@ -189,7 +189,7 @@ class Graph:
     def remove_edge_temporary(self, from_key, to_key):
         """Remove a temporary edge between two nodes in the graph.
 
-        This function temporarily removes a edge between the two nodes. Temporary
+        This function temporarily removes an edge between the two nodes. Temporary
         removals are reverted after each evaluation.
 
         Args:
