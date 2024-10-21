@@ -32,7 +32,7 @@ A basic agent could be implemented as simple as a list of prompts for the subtas
 - [Using AgentKit without Programming Experience](#Using-AgentKit-without-Programming-Experience)
 - [Node Components](#Node-Components)
 - [Commonly Asked Questions](#Commonly-Asked-Questions)
-- [Citing AgnetKit](#Citing-AgentKit)
+- [Citing AgentKit](#Citing-AgentKit)
 
 # Installation
 
@@ -69,7 +69,7 @@ pip install -e .
 
 # Getting Started
 
-The basic building block in AgentKit is a node, containing a natural language prompt for a specific subtask. The nodes are linked together by the dependency specifications, which specify the order of evaluation. Different arrangements of nodes can represent different different logic and throught processes.
+The basic building block in AgentKit is a node, containing a natural language prompt for a specific subtask. The nodes are linked together by the dependency specifications, which specify the order of evaluation. Different arrangements of nodes can represent different logic and thought processes.
 
 At inference time, AgentKit evaluates all nodes in specified order as a directed acyclic graph (DAG).
 
@@ -139,7 +139,7 @@ First, follow [the installation guide](#Installation) to install AgentKit with `
 
 Then, set environment variables `OPENAI_KEY` and `OPENAI_ORG` to be your OpenAI key and org_key.
 
-Finally, run the following to evoke the command line interface (CLI):
+Then, run the following to invoke the command line interface (CLI):
 
 ```bash
 git clone https://github.com/holmeswww/AgentKit && cd AgentKit
