@@ -27,7 +27,7 @@ parser.add_argument('--kb_refine_granularity', type=int, default=50, help='some 
 parser.add_argument('--llm_plan_accurate', type=str, default="gpt-4-turbo-2024-04-09", help='LLM')
 parser.add_argument('--llm_plan', type=str, default="gpt-4-turbo-2024-04-09", help='LLM')
 parser.add_argument('--llm_spatial', type=str, default="gpt-4-0613", help='LLM')
-parser.add_argument('--llm_fast', type=str, default="all-gpt-3.5-turbo", help='LLM')
+parser.add_argument('--llm_fast', type=str, default="gpt-3.5-turbo", help='LLM')
 parser.add_argument('--llm_fast_accurate', type=str, default="gpt-3.5-turbo-0125", help='LLM')
 parser.add_argument('-q', '--quiet', action='store_true', help='Quiet mode')
 parser.add_argument('--resume_id', type=str, default=None, help='resume wandb run id')
