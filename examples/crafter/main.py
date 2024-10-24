@@ -54,7 +54,7 @@ MANUAL = get_ctxt()
 
 from build_graph_new import build_graph
 from compose_prompt import compose_feedback_prompt, compose_gameplay_prompt
-from llm_api import get_query, get_token_counts # use agentkit.llm_api.get_query instead
+from agentkit.llm_api import get_query, get_token_counts 
 from functools import partial
 
 import wandb
