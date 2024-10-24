@@ -1,7 +1,7 @@
 import pathlib
-
-import ruamel.yaml as yaml
+from ruamel.yaml import YAML
 
 root = pathlib.Path(__file__).parent
-for key, value in yaml.safe_load((root / 'data.yaml').read_text()).items():
+yaml = YAML(typ='safe')
+for key, value in yaml.load((root / 'data.yaml').read_text()).items():
   globals()[key] = value
