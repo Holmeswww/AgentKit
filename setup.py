@@ -21,7 +21,7 @@ setuptools.setup(
     packages=setuptools.find_namespace_packages('src'),
     package_dir={'': 'src'},
     entry_points={'console_scripts': ['agentkit=agentkit.run_gui:main']},
-    install_requires = ['colorama', 'numpy'],
+    install_requires = ['colorama', 'numpy','ruamel.yaml'],
     extras_require=EXTRAS,
     include_package_data=True,
     license="CC-BY-4.0-Attribution",
