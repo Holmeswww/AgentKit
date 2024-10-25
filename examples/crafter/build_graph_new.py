@@ -174,13 +174,13 @@ For each achievement, write a one-sentence explanation of how the achievement ma
 },
 
 'gate-plan_sketch':{
-'prompt':"""Reason with the instruction manual and knowledge base. Explain concisely how the choosen challenge may be approached given the player's current situation, with actions permitted by the game.
+'prompt':"""Reason with the instruction manual and knowledge base. Explain concisely how the chosen challenge may be approached given the player's current situation, with actions permitted by the game.
 Then, 
-1. Confirm if the subgoal '$db.subgoals.subgoal$' is still accuracte for the choosen challenge.
+1. Confirm if the subgoal '$db.subgoals.subgoal$' is still accurate for the chosen challenge.
 2. Confirm if the subgoal '$db.subgoals.subgoal$' is incomplete and up-to-date according to the completion criteria '$db.subgoals.completion_criteria$'.
 
 If yes to both, end the answer here.
-Then, sketch an updated high-level plan for addressing the choosen challenge. Do not plan to go back to something if you cannot provide it's location.
+Then, sketch an updated high-level plan for addressing the chosen challenge. Do not plan to go back to something if you cannot provide it's location.
 If situation allows, the plan-sketch should aim for achieving relevant unaccomplished achievements in the order of difficulty, without impacting player safety.""",
 'dep':['reflect', 'planner_unexpected', 'planner_mistake', 'obs_obj', 'obs_inv', 'obs_vit', 'obs_current_actions', 'achievements', 'challenge'],
 'compose': ComposePlannerPrompt(),
@@ -252,7 +252,7 @@ If none of the existing skills could be applied, create a new skill.
 
 The skill, parameters, and guide should be general enough to be reusable for tasks of the same class.
 
-Format the choosen skill as a Json object of the following format:
+Format the chosen skill as a Json object of the following format:
 ```
 {$skill_name: [$1_line_skill_desciption, $supported_parameters, $skill_guide]}
 ```
@@ -316,7 +316,7 @@ Give each item a concise but precise name as the key, and a dictionary of answer
 "correct": $ANSWER # Confirm that this request does not disagree with the instruction manual. [yes/no] followed by a one-sentence justification.
 }
 ```
-Only include the answers, not the inquires. Remove duplicates and arrange multi-target inquiries into separate items.""",
+Only include the answers, not the inquiries. Remove duplicates and arrange multi-target inquiries into separate items.""",
 'dep':['subgoal_analysis'],
 'after': ['kb-add'],
 'shorthand': 'Unknown information and details',
@@ -360,23 +360,23 @@ Out of the goal-relevant objects, which ones are easily reachable and which ones
 Are there direct obstacles in the way?
 Are there risks in the way? Are they addressable?
 
-Then, determine if the previous plan '$db.action_summary.plan-sketch$' still applies for the subgoal based on the criteiras and the expiration condition.
+Then, determine if the previous plan '$db.action_summary.plan-sketch$' still applies for the subgoal based on the criteria and the expiration condition.
 Relevance criteria: $db.action_summary.relevance-crieria$
 Expiration condition: $db.action_summary.expiration-condition$
 
-If the plan still applies, examine the current observation for any obstacles, hazarads, or unexpected scenarios and reason spatially how they may be addressed.
+If the plan still applies, examine the current observation for any obstacles, hazards, or unexpected scenarios and reason spatially how they may be addressed.
 If necessary, update only the 'details' of the previous plan to achieve the target '$db.action_summary.target$' of the plan.
 
-If the plan does not apply, explain your reasoning, and write an new plan-sketch.
+If the plan does not apply, explain your reasoning, and write a new plan-sketch.
 Reason spatially and temporally with the current observation, the gameplay history, and the action analysis.
 
 Finally, output the updated plan-sketch. The plan-sketch details should concretely describe a procedure or a specific direction to follow, and must be a Json dictionary of the following format:
 ```
 {
 "plan-sketch": $plan-sketch, # A 1-line summary of the plan-sketch
-"detials", # Concrete description of what procedure or a specific direction to follow. Do not offer multiple options or possibilities.
+"details", # Concrete description of what procedure or a specific direction to follow. Do not offer multiple options or possibilities.
 "target", # Concisely write the target of the plan
-"relevance-crieria": $relevance_criteria, # The criteria that the plan is relevant to the current situation
+"relevance-criteria": $relevance_criteria, # The criteria that the plan is relevant to the current situation
 "expiration-condition": $expiration_condition, # The condition that may cause the plan to expire, like specific changes in the observation or the inventory, or after a certain number of steps.
 "notes": $notes # Anything about the current situation or reasoning that may be meaningful to remember for the future.
 }
