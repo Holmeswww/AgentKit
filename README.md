@@ -30,92 +30,87 @@ A basic agent could be implemented as simple as a list of prompts for the subtas
 - [Getting Started](#Getting-Started)
 - [Using Built-in LLM_API](#Built-in-LLM-API)
 - [Using AgentKit without Programming Experience](#Using-AgentKit-without-Programming-Experience)
-- [Node Components](#Node-Components)
+- [Node Components Flowchart](#Node-Components-Flowchart)
 - [Commonly Asked Questions](#Commonly-Asked-Questions)
 - [Citing AgentKit](#Citing-AgentKit)
+- [Star History](#Star-History)
 
 # Installation
 
-Installing the AgentKit stable version is as simple as:
++ Installing the AgentKit stable version is as simple as:
++ ```bash
+  pip install agentkit-llm
+  ```
 
-```bash
-pip install agentkit-llm
-```
++ To install AgentKit with wandb:
++ ```bash
+  pip install agentkit-llm[logging]
+  ```
 
-To install AgentKit with wandb:
++ To install AgentKit with OpenAI and Claude LLM-API support:
++ ```bash
+  pip install agentkit-llm[proprietary]
+  ```
 
-```bash
-pip install agentkit-llm[logging]
-```
++ To install AgentKit with full built-in LLM-API support (including llama):
++ ```bash
+  pip install agentkit-llm[all]
+  ```
 
-To install AgentKit with OpenAI and Claude LLM-API support:
-
-```bash
-pip install agentkit-llm[proprietary]
-```
-
-To install AgentKit with full built-in LLM-API support (including llama):
-
-```bash
-pip install agentkit-llm[all]
-```
-
-Otherwise, to install the cutting edge version from the main branch of this repo, run:
-
-```bash
-git clone https://github.com/holmeswww/AgentKit && cd AgentKit
-pip install -e .
-```
++ Otherwise, to install the cutting edge version from the main branch of this repo, run:
++ ```bash
+  git clone https://github.com/holmeswww/AgentKit && cd AgentKit
+  pip install -e .
+  ```
 
 # Getting Started
-
 The basic building block in AgentKit is a node, containing a natural language prompt for a specific subtask. The nodes are linked together by the dependency specifications, which specify the order of evaluation. Different arrangements of nodes can represent different logic and thought processes.
 
 At inference time, AgentKit evaluates all nodes in specified order as a directed acyclic graph (DAG).
 
-```python
-import agentkit
-from agentkit import Graph, BaseNode
++ ```python
+  import agentkit
+  from agentkit import Graph, BaseNode
 
-import agentkit.llm_api
+  import agentkit.llm_api
 
-LLM_API_FUNCTION = agentkit.llm_api.get_query("gpt-4-turbo")
+  LLM_API_FUNCTION = agentkit.llm_api.get_query("gpt-4-turbo")
 
-LLM_API_FUNCTION.debug = True # Disable this to enable API-level error handling-retry
+  LLM_API_FUNCTION.debug = True # Disable this to enable API-level error handling-retry
 
-graph = Graph()
+  graph = Graph()
 
-subtask1 = "What are the pros and cons for using LLM Agents for Game AI?" 
-node1 = BaseNode(subtask1, subtask1, graph, LLM_API_FUNCTION, agentkit.compose_prompt.BaseComposePrompt(), verbose=True)
-graph.add_node(node1)
+  subtask1 = "What are the pros and cons for using LLM Agents for Game AI?" 
+  node1 = BaseNode(subtask1, subtask1, graph, LLM_API_FUNCTION, agentkit.compose_prompt.BaseComposePrompt(), verbose=True)
+  graph.add_node(node1)
 
-subtask2 = "Give me an outline for an essay titled 'LLM Agents for Games'." 
-node2 = BaseNode(subtask2, subtask2, graph, LLM_API_FUNCTION, agentkit.compose_prompt.BaseComposePrompt(), verbose=True)
-graph.add_node(node2)
+  subtask2 = "Give me an outline for an essay titled 'LLM Agents for Games'." 
+  node2 = BaseNode(subtask2, subtask2, graph, LLM_API_FUNCTION, agentkit.compose_prompt.BaseComposePrompt(), verbose=True)
+  graph.add_node(node2)
 
-subtask3 = "Now, write a full essay on the topic 'LLM Agents for Games'."
-node3 = BaseNode(subtask3, subtask3, graph, LLM_API_FUNCTION, agentkit.compose_prompt.BaseComposePrompt(), verbose=True)
-graph.add_node(node3)
+  subtask3 = "Now, write a full essay on the topic 'LLM Agents for Games'."
+  node3 = BaseNode(subtask3, subtask3, graph, LLM_API_FUNCTION, agentkit.compose_prompt.BaseComposePrompt(), verbose=True)
+  graph.add_node(node3)
 
-# add dependencies between nodes
-graph.add_edge(subtask1, subtask2)
-graph.add_edge(subtask1, subtask3)
-graph.add_edge(subtask2, subtask3)
+  # add dependencies between nodes
+  graph.add_edge(subtask1, subtask2)
+  graph.add_edge(subtask1, subtask3)
+  graph.add_edge(subtask2, subtask3)
 
-result = graph.evaluate() # outputs a dictionary of prompt, answer pairs
-```
+  result = graph.evaluate() # outputs a dictionary of prompt, answer pairs
+  ```
 
 ``LLM_API_FUNCTION`` can be any LLM API function that takes ``msg:list`` and ``shrink_idx:int``, and outputs ``llm_result:str`` and ``usage:dict``. Where ``msg`` is a prompt ([OpenAI format](https://platform.openai.com/docs/guides/text-generation/chat-completions-api) by default), and ``shrink_idx:int`` is an index at which the LLM should reduce the length of the prompt in case of overflow. 
 
 AgentKit tracks token usage of each node through the ``LLM_API_FUNCTION`` with:
-```python
-usage = {
-    'prompt': $prompt token counts,
-    'completion': $completion token counts,
-}
-```
++ ```python
+  usage = {
+      'prompt': $prompt token counts,
+      'completion': $completion token counts,
+  }
+  ```
 
-# Built-in LLM-API
+# Using Built-in LLM_API
 
 The built-in `agentkit.llm_api` functions require installing with `[proprietary]` or `[all]` setting. See [the installation guide](#Installation) for details.
 
@@ -129,9 +124,9 @@ To use the Anthropic models, set environment variable `ANTHROPIC_KEY`. Alternati
 
 To use Ollama models, see https://github.com/ollama/ollama for installation instructions. Then set `OLLAMA_URL` and `OLLAMA_TOKENIZER_PATH`, or store `OLLAMA_TOKENIZER_PATH`, `OLLAMA_URL` in the first 2 lines of `~/.ollama/ollama_model.info`.
 
-```
-LLM_API_FUNCTION = agentkit.llm_api.get_query("ollama-llama3")
-```
++ ```
+  LLM_API_FUNCTION = agentkit.llm_api.get_query("ollama-llama3")
+  ```
 
 # Using AgentKit without Programming Experience
 
@@ -141,14 +136,14 @@ Then, set environment variables `OPENAI_KEY` and `OPENAI_ORG` to be your OpenAI 
 
 Then, run the following to invoke the command line interface (CLI):
 
-```bash
-git clone https://github.com/holmeswww/AgentKit && cd AgentKit
-cd examples/prompt_without_coding
-python generate_graph.py
-```
++ ```bash
+  git clone https://github.com/holmeswww/AgentKit && cd AgentKit
+  cd examples/prompt_without_coding
+  python generate_graph.py
+  ```
 ![](https://github.com/Holmeswww/AgentKit/raw/main/imgs/screenshot.png)
 
-# Node Components
+# Node Components Flowchart
 
 ![](https://github.com/Holmeswww/AgentKit/raw/main/imgs/node_archi.png)
 Inside each node (as shown to the left of the figure), AgentKit runs a built-in flow that **preprocesses** the input (Compose), queries the LLM with a preprocessed input and prompt $q_v$, and optionally **postprocesses** the output of the LLM (After-query).
@@ -157,19 +152,19 @@ To support advanced capabilities such as branching, AgentKit offers API to dynam
 
 # Commonly Asked Questions
 
-**Q:** I'm using the default `agentkit.llm_api`, and `graph.evaluate()` seems to be stuck.
-
-**A:** The LLM_API function catches and retries all API errors by default. Set `verbose=True` for each node to see which node you are stuck on, and `LLM_API_FUNCTION.debug=True` to see what error is causing the error.
++ **Q:** I'm using the default `agentkit.llm_api`, and `graph.evaluate()` seems to be stuck.
++ **A:** The LLM_API function catches and retries all API errors by default. Set `verbose=True` for each node to see which node you are stuck on, and `LLM_API_FUNCTION.debug=True` to see what error is causing the error.
 
 # Citing AgentKit
-```bibtex
-@inproceedings{agentkit,
-  title = {AgentKit: Flow Engineering with Graphs, not Coding},
-  author = {Wu, Yue and Fan, Yewen and Min, So Yeon and Prabhumoye, Shrimai and McAleer, Stephen and Bisk, Yonatan and Salakhutdinov, Ruslan and Li, Yuanzhi and Mitchell, Tom},
-  year = {2024},
-  booktitle = {COLM},
-}
-```
++ ```bibtex
+  @inproceedings{agentkit,
+    title = {AgentKit: Flow Engineering with Graphs, not Coding},
+    author = {Wu, Yue and Fan, Yewen and Min, So Yeon and Prabhumoye, Shrimai and McAleer, Stephen and Bisk, Yonatan and Salakhutdinov, 
+  Ruslan and Li, Yuanzhi and Mitchell, Tom},
+    year = {2024},
+    booktitle = {COLM},
+  }
+  ```
 
 # Star History
 
