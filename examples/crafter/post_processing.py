@@ -214,6 +214,10 @@ class ActionAfterQuery(aq.JsonAfterQuery):
         # self.length = 3
 
     def post_process(self):
+        # Note: There appears to contain lots of environment related hacking in this function, but note that this is only to make **repeat** work.
+        # **repeat** allows the environment to repeat certain actions without querying the agent. This is only for cost reduction and speedup,
+        # Removing **repeat** should only result in improved performance, but will incur more cost.
+        
         parsed_answer = self.parse_json()
         act, action_name, error_msg = match_act(parsed_answer[-1]['action'].replace("(","").replace("_"," "))
         if act is None:
