@@ -122,7 +122,7 @@ class ComposePromptDB(BaseComposePrompt):
 
         Example:
 
-        1. Confirm if the subgoal '$db.subgoals.subgoal$' is still accuracte for the challenge.
+        1. Confirm if the subgoal '$db.subgoals.subgoal$' is still accurate for the challenge.
 
         2. Confirm if the subgoal '$db.subgoals.subgoal$' is incomplete and up-to-date according to the completion criteria '$db.subgoals.guide$'.
         
