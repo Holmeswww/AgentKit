@@ -27,6 +27,12 @@ def query_ollama_chat(model):
     query_model = Ollama_chat(model, token_counter)
     return query_model
 
+def query_ms_chat(model):
+    from .ms import GPT_chat
+    global token_counter
+    query_model = GPT_chat(model, token_counter)
+    return query_model
+
 def get_query(LLM_name):
     """Get the query model for the specified LLM_name.
 
@@ -54,5 +60,7 @@ def get_query(LLM_name):
         return query_claude_chat(model=LLM_name)
     elif LLM_name.lower().startswith("ollama-"):
         return query_ollama_chat(model=LLM_name)
+    elif LLM_name.lower().startswith("ms-"):
+        return query_ms_chat(model=LLM_name)
     else:
         raise NotImplementedError("LLM {} not implemented".format(LLM_name))

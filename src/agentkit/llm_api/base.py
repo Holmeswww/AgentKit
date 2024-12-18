@@ -25,16 +25,24 @@ class BaseModel:
     def encode(self, txt):
         print("Warning: encode is not implemented for this model, returning words.")
         return txt.split(" ")
+    
+    def encode_content(self, content):
+        if type(content) == str:
+            return self.encode(content)
+        elif type(content) == list:
+            return [self.encode(x['text']) for x in content if x['type'] == 'text']
+        else:
+            raise ValueError("Unknown type for content: {}".format(type(content)))
 
     def decode(self, txt):
         print("Warning: decode is not implemented for this model, returning concatenation of input.")
         return " ".join(txt)
     
     def count_tokens(self, text):
-        if type(text) == list:
-            return min(sum([len(self.encode(x['content'])) for x in text]), self.model_max)
-        elif type(text) == str:
-            return min(len(self.encode(text)), self.model_max)
+        if type(text) == str:
+            return len(self.encode(text))
+        elif type(text) == list:
+            return sum([len(self.encode(x['text'])) for x in text if x['type'] == 'text'])
         else:
             raise ValueError("Unknown type for text: {}".format(type(text)))
 
@@ -65,9 +73,9 @@ class BaseModel:
         while L > 0:
             L_old = len(self.encode(self.compile_msg_txt(msg)))
             print("Shrinking message by {} tokens...".format(L))
-            if len(self.encode(msg[shrink_idx]['content']))<L:
-                shrink_idx = np.argmax([len(self.encode(x['content'])) for x in msg])
-            msg[shrink_idx]['content'] = self.decode(self.encode(msg[shrink_idx]['content'])[L:])
+            if len(self.encode_content(msg[shrink_idx]['content']))<L:
+                shrink_idx = np.argmax([len(self.encode_content(x['content'])) for x in msg])
+            msg[shrink_idx]['content'] = self.decode(self.encode_content(msg[shrink_idx]['content'])[L:])
             L_new = len(self.encode(self.compile_msg_txt(msg)))
             L = L - (L_old - L_new)
             if L_old - L_new <= 0:
@@ -89,14 +97,22 @@ class BaseModel:
             else:
                 role = "answer"
             result += "## {} ##\n".format(role)
-            result += x['content'].strip() + "\n\n"
+            if type(x['content']) == str:
+                result += x['content'].strip() + "\n\n"
+            else:
+                assert type(x['content']) == list, "content should be either a string or a list"
+                
+                for y in x['content']:
+                    if y['type'] != 'text':
+                        continue
+                    result += y['content'].strip() + "\n\n"
         result += "## answer ##\n"
         return result.strip()
 
     def compute_length(self, msg):
         L = 0
         for x in msg:
-            L += len(self.encode(x['content']))
+            L += len(self.encode_content(x['content']))
         return L
 
     def shrink_msg(self, msg, shrink_idx, L_max):
